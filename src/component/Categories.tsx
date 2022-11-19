@@ -3,12 +3,12 @@ import React from "react";
 
 export const Categories = ({ items }: any): JSX.Element => {
 
-	const [activeItem, setActiveItem] = React.useState(0);
+	const [activeItem, setActiveItem] = React.useState(-1);
 
 	return (
 		<div className="categories">
 			<ul>
-				<li onClick={() => alert('Все')}>Все</li>
+				<li className={activeItem === -1 ? 'active' : ''} onClick={() => setActiveItem(-1)}>Все</li>
 				{items.map((name: string, index: number) =>
 					<li
 						className={activeItem === index ? 'active' : ''}
