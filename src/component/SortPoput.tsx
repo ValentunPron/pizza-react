@@ -18,7 +18,6 @@ export const SortPoput = ({ items }: any): JSX.Element => {
 	const openPoput = () => {
 		setVisiblyPoput(!visiblyPoput);
 	}
-
 	const onSelectItem = (index: number) => {
 		setActiveItem(index);
 		setTimeout(() => {
@@ -43,23 +42,24 @@ export const SortPoput = ({ items }: any): JSX.Element => {
 					/>
 				</svg>
 				<b>Сортировка по:</b>
-				<span onClick={openPoput}>{items[activeItem]}</span>
+				<span onClick={openPoput}>{items[activeItem].name}</span>
 			</div>
-			{visiblyPoput && <div className="sort__popup">
-				<ul>
-					{items &&
-						items.map((name: string, index: number) =>
-							<li
-								className={activeItem === index ? 'active' : ''}
-								onClick={() => onSelectItem(index)}
-								key={`${name}_${index}`}
-							>
-								{name}
-							</li>
-						)
-					}
-				</ul>
-			</div>}
+			{visiblyPoput &&
+				<div className="sort__popup">
+					<ul>
+						{items &&
+							items.map((obj: { name: string, type: string }, index: number) =>
+								<li
+									className={activeItem === index ? 'active' : ''}
+									onClick={() => onSelectItem(index)}
+									key={`${obj.type}_${index}`}
+								>
+									{obj.name}
+								</li>
+							)
+						}
+					</ul>
+				</div>}
 		</div>
 	);
 }

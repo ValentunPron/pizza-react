@@ -1,15 +1,32 @@
+import React from "react"
+
 export interface pizzaItemInterface {
 	id?: number,
 	name: string,
 	imageUrl: string,
-	types: [],
-	sizer: [],
+	types: [number],
+	sizes: [number],
 	price: number,
 	category: number,
 	rating: number,
 }
 
-export const PizzaItem = ({ name, imageUrl, types, sizer, price, category, rating }: pizzaItemInterface) => {
+export const PizzaItem = ({ name, imageUrl, types, sizes, price, category, rating }: pizzaItemInterface) => {
+
+	const [activeItem, setActiveItem] = React.useState(types[0]);
+	const [activeSize, setActiveSize] = React.useState(sizes[0]);
+
+	const typesName = ['тонкое', 'традиционное'];
+	const sizeItem = [26, 30, 40]
+
+	const onSelectType = (index: number) => {
+		setActiveItem(index);
+	}
+
+	const onSelectSize = (index: number) => {
+		setActiveSize(index);
+	}
+
 	return (
 		<div className="pizza-block">
 			<img
@@ -20,13 +37,24 @@ export const PizzaItem = ({ name, imageUrl, types, sizer, price, category, ratin
 			<h4 className="pizza-block__title">{name}</h4>
 			<div className="pizza-block__selector">
 				<ul>
-					<li className="active">тонкое</li>
-					<li>традиционное</li>
+					{typesName.map((type: string, index: number) => (
+						<li
+							onClick={() => onSelectType(index)}
+							className={`${activeItem === index ? 'active' : ''} ${!types.includes(index) ? 'disible' : ''}`}
+							key={type}
+						>
+							{type}
+						</li>))}
 				</ul>
 				<ul>
-					<li className="active">26 см.</li>
-					<li>30 см.</li>
-					<li>40 см.</li>
+					{sizeItem.map((size: number, index: number) => (
+						<li
+							onClick={() => onSelectSize(sizeItem[index])}
+							className={`${activeSize === sizeItem[index] ? 'active' : ''} ${!sizes.includes(size) ? 'disible' : ''}`}
+							key={size}
+						>
+							{size} см
+						</li>))}
 				</ul>
 			</div>
 			<div className="pizza-block__bottom">
