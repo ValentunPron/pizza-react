@@ -1,6 +1,6 @@
 import React from "react";
 
-export const SortPoput = ({ items }: any): JSX.Element => {
+export const SortPoput = React.memo(({ items }: any): JSX.Element => {
 
 	const [visiblyPoput, setVisiblyPoput] = React.useState(false);
 	const [activeItem, setActiveItem] = React.useState(0);
@@ -62,4 +62,4 @@ export const SortPoput = ({ items }: any): JSX.Element => {
 				</div>}
 		</div>
 	);
-}
+})
