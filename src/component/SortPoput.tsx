@@ -1,10 +1,16 @@
 import React from "react";
 
-export const SortPoput = React.memo(({ items }: any): JSX.Element => {
+interface sortPoputInterface {
+	items: any,
+	activeSort: string,
+	clickSort: Function,
+}
+
+export const SortPoput = React.memo(({ items = [], activeSort, clickSort }: sortPoputInterface): JSX.Element => {
 
 	const [visiblyPoput, setVisiblyPoput] = React.useState(false);
-	const [activeItem, setActiveItem] = React.useState(0);
 	const sortRef = React.useRef(null);
+	const activeLabel = items.find((item: { type: string }) => item.type === activeSort).name;
 
 	React.useEffect(() => {
 		document.body.addEventListener('click', clickOutPoput);
@@ -18,8 +24,8 @@ export const SortPoput = React.memo(({ items }: any): JSX.Element => {
 	const openPoput = () => {
 		setVisiblyPoput(!visiblyPoput);
 	}
-	const onSelectItem = (index: number) => {
-		setActiveItem(index);
+	const onSelectItem = (name: any) => {
+		clickSort(name);
 		setTimeout(() => {
 			setVisiblyPoput(false);
 		}, 200)
@@ -42,7 +48,7 @@ export const SortPoput = React.memo(({ items }: any): JSX.Element => {
 					/>
 				</svg>
 				<b>Сортировка по:</b>
-				<span onClick={openPoput}>{items[activeItem].name}</span>
+				<span onClick={openPoput}>{activeLabel}</span>
 			</div>
 			{visiblyPoput &&
 				<div className="sort__popup">
@@ -50,8 +56,8 @@ export const SortPoput = React.memo(({ items }: any): JSX.Element => {
 						{items &&
 							items.map((obj: { name: string, type: string }, index: number) =>
 								<li
-									className={activeItem === index ? 'active' : ''}
-									onClick={() => onSelectItem(index)}
+									className={activeSort === obj.type ? 'active' : ''}
+									onClick={() => onSelectItem(obj)}
 									key={`${obj.type}_${index}`}
 								>
 									{obj.name}

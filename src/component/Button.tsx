@@ -1,12 +1,16 @@
 interface buttonInterface {
+	onClick?: any
 	buttonCart: string,
 	outline?: boolean,
 	children: any,
 }
 
-export const Button = ({ buttonCart, outline, children, ...props }: buttonInterface): JSX.Element => {
+export const Button = ({ onClick, buttonCart, outline, children }: buttonInterface): JSX.Element => {
 	return (
-		<button className={`button ${buttonCart} ${outline ? 'button--outline' : ''}`}>
+		<button
+			onClick={onClick}
+			className={`button ${buttonCart} ${outline
+				? 'button--outline' : ''}`}>
 			{children}
 		</button>
 	);

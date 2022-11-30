@@ -8,8 +8,14 @@ export const pizzas = (state = initialState, action: { type: string, payload: st
 		case 'SET_PIZZAS':
 			return {
 				...state,
-				items: action.payload
+				items: action.payload,
+				isLoaded: true,
 			};
+		case 'SET_LOADED':
+			return {
+				...state,
+				isLoaded: action.payload
+			}
 		default:
 			return state
 	}

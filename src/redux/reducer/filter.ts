@@ -1,6 +1,9 @@
 const initialState = {
-	category: 0,
-	sortBy: 'popular',
+	category: -1,
+	sortBy: {
+		type: 'popular',
+		order: 'desc'
+	},
 }
 
 export const filter = (state = initialState, action: { type: string, payload: string & number }) => {

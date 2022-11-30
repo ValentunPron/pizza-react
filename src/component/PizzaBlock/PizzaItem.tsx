@@ -1,17 +1,19 @@
 import React from "react"
+import { Button } from "../Button";
 
 export interface pizzaItemInterface {
 	id?: number,
 	name: string,
 	imageUrl: string,
-	types: [number],
-	sizes: [number],
+	types: number[],
+	sizes: number[],
 	price: number,
 	category: number,
-	rating: number,
+	rating?: number,
+	onClickAddPizza: Function,
 }
 
-export const PizzaItem = ({ name, imageUrl, types, sizes, price, category, rating }: pizzaItemInterface) => {
+export const PizzaItem = ({ id, name, imageUrl, types, sizes, price, category, rating, onClickAddPizza }: pizzaItemInterface) => {
 
 	const [activeItem, setActiveItem] = React.useState(types[0]);
 	const [activeSize, setActiveSize] = React.useState(sizes[0]);
@@ -25,6 +27,18 @@ export const PizzaItem = ({ name, imageUrl, types, sizes, price, category, ratin
 
 	const onSelectSize = (index: number) => {
 		setActiveSize(index);
+	}
+
+	const onAddPizza = () => {
+		const pizza = {
+			id,
+			name,
+			imageUrl,
+			price,
+			type: typesName[activeItem],
+			size: activeSize,
+		}
+		onClickAddPizza(pizza);
 	}
 
 	return (
@@ -59,7 +73,7 @@ export const PizzaItem = ({ name, imageUrl, types, sizes, price, category, ratin
 			</div>
 			<div className="pizza-block__bottom">
 				<div className="pizza-block__price">от {price} ₽</div>
-				<div className="button button--outline button--add">
+				<Button onClick={onAddPizza} buttonCart="button--add" outline>
 					<svg
 						width="12"
 						height="12"
@@ -74,7 +88,7 @@ export const PizzaItem = ({ name, imageUrl, types, sizes, price, category, ratin
 					</svg>
 					<span>Добавить</span>
 					<i>2</i>
-				</div>
+				</Button>
 			</div>
 		</div>
 	)
