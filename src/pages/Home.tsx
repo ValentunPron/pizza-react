@@ -5,6 +5,7 @@ import { Categories, SortPoput, PizzaItem, PizzaLoading } from '../component';
 import { pizzaItemInterface } from '../component/PizzaBlock/PizzaItem';
 import { fetchPizza, setLoaded } from '../redux/action/pizzas';
 import { setCategory, setSortBy } from '../redux/action/filter';
+import { addPizzaCart } from '../redux/action/cart';
 
 const categoriesItem = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'],
 	sortByItem = [
@@ -14,12 +15,13 @@ const categoriesItem = ['Мясные', 'Вегетарианская', 'Гри�
 
 export const Home = (): JSX.Element => {
 	const dispatch: Function = useDispatch();
-	const { items, isLoaded, category, sortBy } = useSelector(({ pizzas, filter }: any) => {
+	const { items, isLoaded, category, sortBy, itemsCart } = useSelector(({ pizzas, filter, cart }: any) => {
 		return {
 			items: pizzas.items,
 			isLoaded: pizzas.isLoaded,
 			category: filter.category,
 			sortBy: filter.sortBy,
+			itemsCart: cart.items,
 		}
 	});
 
@@ -36,9 +38,11 @@ export const Home = (): JSX.Element => {
 		dispatch(setSortBy(type));
 	}, []);
 
-	const onClickAddPizza = (obj: any) => {
-		console.log(obj);
-	}
+
+	const onClickAddPizza = React.useCallback((obj: any) => {
+		dispatch(addPizzaCart(obj));
+	}, []);
+
 
 	return (
 		<div className="container">
@@ -57,8 +61,15 @@ export const Home = (): JSX.Element => {
 			<h2 className="content__title">Все пиццы</h2>
 			<div className="content__items">
 				{isLoaded
-					? items.map((pizza: pizzaItemInterface) => <PizzaItem key={pizza.id} {...pizza} onClickAddPizza={onClickAddPizza} />)
-					: Array(10).fill(0).map((_, index) => <PizzaLoading key={index} />)
+					? items.map((pizza: pizzaItemInterface) =>
+						<PizzaItem
+							key={pizza.id}
+							{...pizza}
+							onClickAddPizza={onClickAddPizza}
+							addedCart={(id: number) => itemsCart[id] && itemsCart[id].length}
+						/>)
+					: Array(10).fill(0).map((_, index) =>
+						<PizzaLoading key={index} />)
 				}
 			</div>
 		</div>

@@ -11,9 +11,10 @@ export interface pizzaItemInterface {
 	category: number,
 	rating?: number,
 	onClickAddPizza: Function,
+	addedCart: any
 }
 
-export const PizzaItem = ({ id, name, imageUrl, types, sizes, price, category, rating, onClickAddPizza }: pizzaItemInterface) => {
+export const PizzaItem = ({ id, name, imageUrl, types, sizes, price, category, rating, onClickAddPizza, addedCart }: pizzaItemInterface) => {
 
 	const [activeItem, setActiveItem] = React.useState(types[0]);
 	const [activeSize, setActiveSize] = React.useState(sizes[0]);
@@ -87,7 +88,7 @@ export const PizzaItem = ({ id, name, imageUrl, types, sizes, price, category, r
 						/>
 					</svg>
 					<span>Добавить</span>
-					<i>2</i>
+					{addedCart(id) && <i>{addedCart(id)}</i>}
 				</Button>
 			</div>
 		</div>

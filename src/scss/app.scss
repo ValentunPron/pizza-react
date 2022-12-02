@@ -13,8 +13,8 @@ body {
 .wrapper {
   width: calc(100vw - 100px);
   height: 100%;
+  margin: 0 auto;
   background-color: #fff;
-  margin: 0px auto;
   border-radius: 10px;
   max-width: 1400px;
 }
@@ -312,3 +312,5 @@ body {
     }
   }
 }
+
+@import 'components/adaptive';
