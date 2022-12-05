@@ -66,7 +66,7 @@ export const Home = (): JSX.Element => {
 							key={pizza.id}
 							{...pizza}
 							onClickAddPizza={onClickAddPizza}
-							addedCart={(id: number) => itemsCart[id] && itemsCart[id].length}
+							addedCart={(id: number) => itemsCart[id] && itemsCart[id].items.length}
 						/>)
 					: Array(10).fill(0).map((_, index) =>
 						<PizzaLoading key={index} />)

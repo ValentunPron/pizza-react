@@ -3,7 +3,7 @@ const initialState = {
 	isLoaded: false,
 }
 
-export const pizzas = (state = initialState, action: { type: string, payload: string }) => {
+export const pizzas = (state = initialState, action: { type: string, payload: string | any }) => {
 	switch (action.type) {
 		case 'SET_PIZZAS':
 			return {
