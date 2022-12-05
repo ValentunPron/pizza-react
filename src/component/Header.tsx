@@ -14,14 +14,14 @@ export const Header = (): JSX.Element => {
 						<img width="38" src={logoSvg} alt="Pizza logo" />
 						<div>
 							<h1>React Pizza</h1>
-							<p>самая вкусная пицца во вселенной</p>
+							<p>найсмачніша піца у всесвіті</p>
 						</div>
 					</div>
 				</Link>
 				<div className="header__cart">
 					<Link to="/cart">
 						<Button buttonCart='button--cart'>
-							<span>{totalPrice} ₽</span>
+							<span>{totalPrice} ₴</span>
 							<div className="button__delimiter"></div>
 							<svg
 								width="18"

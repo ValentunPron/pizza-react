@@ -1,4 +1,25 @@
-@media (max-width: 768px) {
+@media (max-width: 1476px) {
+	.content {
+		&__items {
+		  display: grid;
+		  grid-template-columns: auto auto auto;
+		  justify-content: space-between;
+		}
+	}
+}
+
+@media (max-width: 1110px) {
+	.content {
+		&__items {
+		  display: grid;
+		  grid-template-columns: auto auto;
+		  justify-content: space-between;
+		}
+	}
+}
+
+
+@media (max-width: 805px) {
 	.header {
 		&__logo {
 			img {
@@ -38,6 +59,13 @@
 			}
 		}
 	}
+	.content {
+		&__items {
+			display: grid;
+			grid-template-columns: auto;
+			justify-content: center;
+		}
+	}
 }
 @media (max-width: 425px) {
 	.wrapper {
@@ -74,5 +102,16 @@
 			font-size: 16px;
 		}
 	}
+	}
+	.content {
+		&__items {
+			display: flex;
+			margin: 0px;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		.pizza-block:not(:nth-of-type(4n)) {
+			margin-right: 0px;
+		}
 	}
 }

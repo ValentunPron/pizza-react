@@ -47,7 +47,7 @@ export const SortPoput = React.memo(({ items = [], activeSort, clickSort }: sort
 						fill="#2C2C2C"
 					/>
 				</svg>
-				<b>Сортировка по:</b>
+				<b>Сортирувати по:</b>
 				<span onClick={openPoput}>{activeLabel}</span>
 			</div>
 			{visiblyPoput &&

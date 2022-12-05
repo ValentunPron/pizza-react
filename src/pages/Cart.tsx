@@ -52,7 +52,7 @@ export const Cart = (): JSX.Element => {
 								<path d="M11.6666 9.16667V14.1667" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
 							</svg>
 
-							<span onClick={onClearCart}>Очистить корзину</span>
+							<span onClick={onClearCart}>Очистити корзину</span>
 						</div>
 					</div>
 					{addedPizza.map((obj) =>
@@ -71,31 +71,31 @@ export const Cart = (): JSX.Element => {
 						/>)}
 					<div className="cart__bottom">
 						<div className="cart__bottom-details">
-							<span> Всего пицц: <b>{totalCount} шт.</b> </span>
-							<span> Сумма заказа: <b>{totalPrice} ₽</b> </span>
+							<span> Всього пицц: <b>{totalCount} шт.</b> </span>
+							<span> Сума заказу: <b>{totalPrice} ₴</b> </span>
 						</div>
 						<div className="cart__bottom-buttons">
 							<Link to="/" className="button button--outline button--add go-back-btn">
 								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 								</svg>
-								<span>Вернуться назад</span>
+								<span>Вернутися назад</span>
 							</Link>
 							<div className="button pay-btn">
-								<span>Оплатить сейчас</span>
+								<span>Оплатити зараз</span>
 							</div>
 						</div>
 					</div>
 				</div> :
 				<div className="cart cart--empty">
-					<h2>Корзина пустая 😕</h2>
+					<h2>Корзина пуста  😕</h2>
 					<p>
-						Вероятней всего, вы не заказывали ещё пиццу.<br />
-						Для того, чтобы заказать пиццу, перейди на главную страницу.
+						Швидше за все, ви не замовляли ще піцу.<br />
+						Щоб замовити піцу, перейдіть на головну сторінку.
 					</p>
 					<img src={emptyCart} alt="Empty cart" />
 					<Link to="/" className="button button--black">
-						<span>Вернуться назад</span>
+						<span>Вернутися назад</span>
 					</Link>
 				</div>
 			}

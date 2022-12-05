@@ -7,11 +7,11 @@ import { fetchPizza, setLoaded } from '../redux/action/pizzas';
 import { setCategory, setSortBy } from '../redux/action/filter';
 import { addPizzaCart } from '../redux/action/cart';
 
-const categoriesItem = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'],
+const categoriesItem = ["М'ясні", 'Вегетаріанська', 'Гриль', 'Гострі', 'Закриті'],
 	sortByItem = [
-		{ name: 'популярности', type: 'popular', order: 'desc' },
-		{ name: 'цене', type: 'price', order: 'desc' },
-		{ name: 'алфавиту', type: 'name', order: 'asc' }];
+		{ name: 'популярності', type: 'popular', order: 'desc' },
+		{ name: 'ціні', type: 'price', order: 'desc' },
+		{ name: 'алфавіту', type: 'name', order: 'asc' }];
 
 export const Home = (): JSX.Element => {
 	const dispatch: Function = useDispatch();
@@ -27,7 +27,7 @@ export const Home = (): JSX.Element => {
 
 	React.useEffect(() => {
 		dispatch(setLoaded(false));
-		setTimeout(() => dispatch(fetchPizza(category, sortBy)), 500)
+		setTimeout(() => dispatch(fetchPizza(category, sortBy)), 250)
 	}, [category, sortBy]);
 
 	const selectCategory = React.useCallback((index: number) => {
@@ -58,7 +58,7 @@ export const Home = (): JSX.Element => {
 					items={sortByItem}
 				/>
 			</div>
-			<h2 className="content__title">Все пиццы</h2>
+			<h2 className="content__title">Всі піци</h2>
 			<div className="content__items">
 				{isLoaded
 					? items.map((pizza: pizzaItemInterface) =>

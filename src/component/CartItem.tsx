@@ -36,7 +36,7 @@ export const CartItem = ({ id, name, image = startImage, type, size, totalPrice,
 			</div>
 			<div className="cart__item-info">
 				<h3>{name}</h3>
-				<p>{type} тесто, {size} см.</p>
+				<p>{type} тісто, {size} см.</p>
 			</div>
 			<div className="cart__item-count">
 				<div onClick={minusPizza} className="button button--outline button--circle cart__item-count-minus">
@@ -55,7 +55,7 @@ export const CartItem = ({ id, name, image = startImage, type, size, totalPrice,
 				</div>
 			</div>
 			<div className="cart__item-price">
-				<b>{totalPrice} ₽</b>
+				<b>{totalPrice} ₴</b>
 			</div>
 			<div className="cart__item-remove">
 				<button onClick={removeItem} className="button button--outline button--circle">

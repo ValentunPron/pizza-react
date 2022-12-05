@@ -19,7 +19,7 @@ export const PizzaItem = ({ id, name, imageUrl, types, sizes, price, category, r
 	const [activeItem, setActiveItem] = React.useState(types[0]);
 	const [activeSize, setActiveSize] = React.useState(sizes[0]);
 
-	const typesName = ['тонкое', 'традиционное'];
+	const typesName = ['тонкі', 'традиційці'];
 	const sizeItem = [26, 30, 40]
 
 	const onSelectType = (index: number) => {
@@ -73,7 +73,7 @@ export const PizzaItem = ({ id, name, imageUrl, types, sizes, price, category, r
 				</ul>
 			</div>
 			<div className="pizza-block__bottom">
-				<div className="pizza-block__price">от {price} ₽</div>
+				<div className="pizza-block__price">від {price} ₴</div>
 				<Button onClick={onAddPizza} buttonCart="button--add" outline>
 					<svg
 						width="12"
@@ -87,7 +87,7 @@ export const PizzaItem = ({ id, name, imageUrl, types, sizes, price, category, r
 							fill="white"
 						/>
 					</svg>
-					<span>Добавить</span>
+					<span>Добавити</span>
 					{addedCart(id) && <i>{addedCart(id)}</i>}
 				</Button>
 			</div>
