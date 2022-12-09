@@ -27,7 +27,7 @@ export const Home = (): JSX.Element => {
 
 	React.useEffect(() => {
 		dispatch(setLoaded(false));
-		setTimeout(() => dispatch(fetchPizza(category, sortBy)), 250)
+		setTimeout(() => dispatch(fetchPizza(category, sortBy)), 250);
 	}, [category, sortBy]);
 
 	const selectCategory = React.useCallback((index: number) => {
