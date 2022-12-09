@@ -48,7 +48,7 @@ export const fetchPizza = (category = -1, sortBy: { type: string }) => (dispatch
 		dispatch(setPizza(categoryInfo));
 	}
 
-	axios('http://localhost:3000/db.json').then(({ data }) => {
+	axios('./db.json').then(({ data }) => {
 		category >= 0
 			? setCategory(data.pizzas)
 			: dispatch(setPizza(data.pizzas));
