@@ -14,7 +14,7 @@ export const Categories = React.memo(({ activeCategories, items, clickCategories
 				<li className={activeCategories === -1 ? 'active' : ''}
 					onClick={() => clickCategories(-1)}
 				>
-					Все
+					Всі
 				</li>
 				{items.map((name: string, index: number) =>
 					<li
