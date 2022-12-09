@@ -61,8 +61,6 @@ export const fetchPizza = (category = -1, sortBy: { type: string }) => (dispatch
 		}
 	}
 	)
-	//axios(`http://localhost:3001/pizzas?${category >= 0 ? `category=${category}` : ''}&_sort=${sortBy.type}&_order=${sortBy.order}`)
-	//	.then(({ data }) => dispatch(setPizza(data)));
 }
 
 export const setLoaded = (payload: boolean) => ({
